@@ -1,0 +1,1 @@
+-- Will create database, use the database, and declare the table in here
