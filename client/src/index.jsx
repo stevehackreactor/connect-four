@@ -1,9 +1,12 @@
 const React = require('react');
 const reactDom = require('react-dom');
 
+const Board = require('./components/board.jsx');
+// import/require statements are still needed even if using webpack. webpack uses this info for bundling purposes
+
 // building client app in here
 
-class App extends React.component {
+class App extends React.Component {
   constructor(props) {
     super(props)
 
@@ -54,7 +57,7 @@ class App extends React.component {
     return undefined;
   }
 
-  checkColumn = (state, yPos, xPos) => {
+  checkColumn = (board, yPos, xPos) => {
     // look at each row in xPos for comparisons
     let player = board[yPos][xPos];
     let inARow = 0;
@@ -128,7 +131,8 @@ class App extends React.component {
   render() {
     return (
       <div>
-        <h1>APP GOES HERE</h1>
+        <h1>Connect Four (from index.jsx file)</h1>
+        <Board board={this.state.board}/>
       </div>
     )
   }

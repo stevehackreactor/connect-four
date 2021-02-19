@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json({type: 'application/json'}));
 
 // routes ====================================================
-app.use(express.static('client'));
+app.use(express.static('./client/dist'));
 
 app.post('/', (req, res) => {
   res.end('request sent through');
