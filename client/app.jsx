@@ -11,14 +11,14 @@ class App extends React.component {
     // player 1 will be shown with a 1, player 2 with a 2
     this.state = {
       board: [
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null],
-        [null, null, null, null, null, null, null, null, null]
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0]
       ]
     };
 
@@ -75,14 +75,47 @@ class App extends React.component {
     return undefined;
   }
 
-  checkMajorDiagonal = (state, yPos, xPos) => {
+  checkMajorDiagonal = (board, yPos, xPos) => {
     // determine where row 0 start of the diagonal is or would be (if out of bounds)
-    // iterate over the major diagonal
-    // do the same stuff
+    let player = board[yPos][xPos];
+    let xPosWhenyPosZero = xPos - yPos;
+    let inARow = 0;
+    // increment both positions until x or y is out of bounds
+    for (let i = 0; i < 8; i++) {
+      // iterate over the major diagonal
+      if (board[i][xPosWhenyPosZero + i] === player) {
+        inARow++;
+      } else {
+        inARow = 0;
+      }
+      if (inARow >= 4) {
+        return player;
+      }
+    }
+    console.log('no match in major diagonal starting in row 0 at column ', xPosWhenyPosZero);
+    return undefined;
   }
 
-  checkMinorDiagonal = (state, yPos, xPos) => {
+  checkMinorDiagonal = (board, yPos, xPos) => {
     // returns the winning player or undefined if no winner
+    // determine where row 0 start of the diagonal is or would be (if out of bounds)
+    let player = board[yPos][xPos];
+    let xPosWhenyPosZero = xPos + yPos;
+    let inARow = 0;
+    // increment both positions until x or y is out of bounds
+    for (let i = 0; i < 8; i++) {
+      // iterate over the major diagonal
+      if (board[i][xPosWhenyPosZero - i] === player) {
+        inARow++;
+      } else {
+        inARow = 0;
+      }
+      if (inARow >= 4) {
+        return player;
+      }
+    }
+    console.log('no match in minor diagonal starting in row 0 at column ', xPosWhenyPosZero);
+    return undefined;
   }
   // calls all checks
   checkBoard = (state) => {
