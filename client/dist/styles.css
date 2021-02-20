@@ -1,0 +1,26 @@
+.position {
+  background-image: url("./assets/pixil-frame-0.png");
+  height: 100px;
+  width: 100px;
+}
+
+.red {
+  background-image: url("./assets/red.png");
+  height: 100px;
+  width: 100px;
+}
+
+.blue {
+  background-image: url("./assets/blue.png");
+  height: 100px;
+  width: 100px;
+}
+
+.column {
+  margin-right: 11px;
+  margin-left: 11px;
+}
+
+.title {
+  padding-left: 200px;
+}
